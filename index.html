@@ -1300,7 +1300,6 @@
         <p class="contact-sub">Building something? Looking for a backend engineer? Let's talk.</p>
         <form action="https://formspree.io/f/mlgpgjng" method="POST">
           <input type="hidden" name="_next" value="https://roshnithakor07.github.io">
-          <input type="hidden" name="_subject" value="🚀 New Portfolio Message from {{name}}">
           <input type="hidden" name="_format" value="plain">
           <input type="hidden" name="_replyto" value="{{email}}">
           <input type="hidden" name="_autoresponse" value="off">
@@ -1313,6 +1312,10 @@
               <label class="fl">Email</label>
               <input type="email" name="email" class="fi" placeholder="you@example.com" required>
             </div>
+          </div>
+          <div class="fg" style="margin-bottom:0.65rem">
+            <label class="fl">Subject</label>
+            <input type="text" name="_subject" class="fi" placeholder="e.g. Hiring for Backend Role · Freelance Project" required>
           </div>
           <div class="fg">
             <label class="fl">Message</label>
