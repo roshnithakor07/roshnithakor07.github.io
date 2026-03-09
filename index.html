@@ -251,12 +251,14 @@
       border-radius:100px; border:1px solid transparent;
       transition:all 0.25s; font-weight:400;
     }
-    .btn-primary { background:var(--gold); color:#07070f; }
-    .btn-primary:hover { background:#f5dca0; box-shadow:0 0 28px var(--gold-glow); }
+    .btn-primary { background:var(--gold); color:#07070f; font-weight:600; }
+    .btn-primary:hover { background:#f5dca0; box-shadow:0 0 28px var(--gold-glow); transform:translateY(-1px); }
     .btn-ghost {
-      border-color:var(--border-hi); color:var(--dim);
+      border-color:rgba(255,255,255,0.25);
+      color:var(--text);
+      background:rgba(255,255,255,0.07);
     }
-    .btn-ghost:hover { border-color:var(--gold-dim); color:var(--gold); }
+    .btn-ghost:hover { border-color:var(--gold); color:var(--gold); background:rgba(233,202,128,0.1); }
 
     /* ═══════════════════════════════════════ PROFILE  c6 */
     .profile {
@@ -285,12 +287,13 @@
       display:inline-flex; align-items:center; gap:0.35rem;
       font-family:var(--mono); font-size:0.6rem;
       letter-spacing:0.06em; text-transform:uppercase;
-      color:var(--dim); text-decoration:none;
+      color:var(--text); text-decoration:none;
       padding:0.45rem 0.9rem;
-      border:1px solid var(--border); border-radius:8px;
+      border:1px solid rgba(255,255,255,0.2); border-radius:8px;
+      background:rgba(255,255,255,0.07);
       transition:all 0.2s;
     }
-    .chip:hover { border-color:var(--border-hi); color:var(--text); }
+    .chip:hover { border-color:var(--gold); color:var(--gold); background:rgba(233,202,128,0.1); }
 
     /* ═══════════════════════════════════════ STAT  c2 */
     .stat { text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
@@ -381,16 +384,21 @@
       padding:0.2rem 0.58rem;
       background:rgba(255,255,255,0.04); border-radius:5px; color:var(--dim);
     }
-    .proj-links { display:flex; gap:0.45rem; margin-top:auto; }
     .plink {
       display:inline-flex; align-items:center; gap:0.4rem;
       font-family:var(--mono); font-size:0.6rem;
       letter-spacing:0.06em; text-decoration:none;
-      color:var(--dim); border:1px solid var(--border);
+      color:var(--text); border:1px solid rgba(255,255,255,0.2);
+      background:rgba(255,255,255,0.07);
       padding:0.42rem 0.9rem; border-radius:8px;
       transition:all 0.2s;
     }
-    .plink:hover { border-color:var(--gold-dim); color:var(--gold); }
+    .plink:hover { border-color:var(--gold); color:var(--gold); background:rgba(233,202,128,0.1); }
+    .plink.live {
+      color:var(--green); border-color:rgba(80,217,138,0.4);
+      background:rgba(80,217,138,0.1);
+    }
+    .plink.live:hover { border-color:var(--green); background:rgba(80,217,138,0.18); }
 
     /* ═══════════════════════════════════════ SKILLS  c4 */
     .skills-title, .tech-title, .exp-title {
@@ -521,14 +529,16 @@
     .connect-h { font-family:var(--serif); font-size:1.4rem; font-weight:400; margin-bottom:0.35rem; }
     .connect-p { font-size:0.78rem; color:var(--dim); margin-bottom:1.1rem; }
     .social-row { display:flex; gap:0.5rem; margin-bottom:1.1rem; flex-wrap:wrap; }
+    .proj-links { display:flex; gap:0.45rem; margin-top:auto; flex-wrap:wrap; }
     .soc {
       display:flex; align-items:center; justify-content:center;
       width:40px; height:40px;
-      border:1px solid var(--border); border-radius:10px;
-      color:var(--dim); text-decoration:none;
+      border:1px solid rgba(255,255,255,0.2); border-radius:10px;
+      color:var(--text); text-decoration:none;
+      background:rgba(255,255,255,0.07);
       transition:all 0.2s;
     }
-    .soc:hover { border-color:var(--border-hi); color:var(--text); }
+    .soc:hover { border-color:var(--gold); color:var(--gold); background:rgba(233,202,128,0.1); }
     .sep-line { display:flex; align-items:center; gap:0.65rem; margin-bottom:0.9rem; }
     .sep-line::before,.sep-line::after { content:''; flex:1; height:1px; background:var(--border); }
     .sep-line span { font-family:var(--mono); font-size:0.58rem; color:var(--dim); }
@@ -541,14 +551,68 @@
     }
     .email-row:hover { border-color:var(--gold-dim); color:var(--gold); }
 
+    /* ═══════════════════════════════════════ MINI PROJECT CARDS */
+    .mini-proj-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:0.7rem;
+    }
+    .mini-proj-card {
+      background:rgba(255,255,255,0.025);
+      border:1px solid var(--border); border-radius:14px;
+      padding:1rem 1.1rem;
+      display:flex; flex-direction:column; gap:0.5rem;
+      transition:border-color 0.25s, background 0.25s, transform 0.25s;
+      text-decoration:none;
+    }
+    .mini-proj-card:hover { border-color:var(--border-hi); background:rgba(255,255,255,0.04); transform:translateY(-2px); }
+    .mini-proj-ico { font-size:1.2rem; }
+    .mini-proj-name { font-size:0.82rem; font-weight:600; color:var(--text); }
+    .mini-proj-desc { font-family:var(--mono); font-size:0.6rem; color:var(--dim); line-height:1.55; }
+    .mini-proj-tags { display:flex; flex-wrap:wrap; gap:0.3rem; margin-top:0.2rem; }
+    .mini-proj-tag {
+      font-family:var(--mono); font-size:0.54rem;
+      padding:0.14rem 0.45rem;
+      background:rgba(255,255,255,0.04); border-radius:4px; color:var(--dim);
+    }
+    @media(max-width:767px){ .mini-proj-grid { grid-template-columns:1fr; } }
+    @media(max-width:1100px){ .mini-proj-grid { grid-template-columns:repeat(2,1fr); } }
+
+    /* ═══════════════════════════════════════ GITHUB CTA */
+    .gh-cta {
+      grid-column:span 12;
+      background:linear-gradient(135deg, rgba(93,228,216,0.04) 0%, rgba(233,202,128,0.06) 100%);
+      border:1px solid rgba(233,202,128,0.12);
+      border-radius:var(--r);
+      padding:1.6rem 2rem;
+      display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
+      flex-wrap:wrap;
+    }
+    .gh-cta-left { display:flex; align-items:center; gap:1.2rem; }
+    .gh-cta-icon {
+      width:44px; height:44px; border-radius:12px;
+      background:rgba(233,202,128,0.1); border:1px solid rgba(233,202,128,0.2);
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+      color:var(--gold);
+    }
+    .gh-cta-username { font-family:var(--mono); font-size:0.88rem; color:var(--text); font-weight:600; }
+    .gh-cta-stats { font-family:var(--mono); font-size:0.62rem; color:var(--dim); margin-top:0.2rem; }
+    .gh-cta-btn {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      font-family:var(--mono); font-size:0.67rem;
+      letter-spacing:0.08em; text-transform:uppercase;
+      text-decoration:none; padding:0.7rem 1.4rem;
+      border-radius:100px;
+      background:var(--gold); color:#07070f;
+      border:none; font-weight:500;
+      transition:all 0.25s; flex-shrink:0;
+    }
+    .gh-cta-btn:hover { background:#f5dca0; box-shadow:0 0 24px var(--gold-glow); }
+
     /* ═══════════════════════════════════════ FOOTER */
     footer {
       position:relative; z-index:1;
       text-align:center; padding:1.75rem;
       font-family:var(--mono); font-size:0.6rem; color:var(--muted);
     }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ═══════════════════════════════════════ CURRENTLY LEARNING */
     .learn-grid {
@@ -620,73 +684,50 @@
     .card.vis { animation-play-state:running; }
     @keyframes revl { to{opacity:1;transform:translateY(0);} }
 
-    /* ═══════════════════════════════════════ RESPONSIVE
-       Breakpoints:
-       > 1100px  → 12 col (desktop)
-       768-1100  → 6 col  (tablet)
-       < 768px   → 1 col  (mobile)
-    ─────────────────────────────────────── */
-
-    /* ── TABLET ── */
+    /* ═══════════════════════════════════════ RESPONSIVE */
     @media(max-width:1100px){
       .grid { grid-template-columns:repeat(6,1fr); }
-
-      /* reset all spans to 6 by default */
       .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c12 { grid-column:span 6; }
       .r2 { grid-row:span 1; }
       .divider-row { grid-column:span 6; }
-
-      /* specific tablet overrides */
       .t3  { grid-column:span 3; }
       .t2  { grid-column:span 2; }
       .t4  { grid-column:span 4; }
-
       .hero { min-height:340px; }
       .hero-title { font-size:2.8rem; }
+      .gh-cta { grid-column:span 6; }
     }
 
-    /* ── MOBILE ── */
     @media(max-width:767px){
       :root { --gap:0.65rem; }
       .wrap { padding:5rem 1rem 2.5rem; }
       .grid { grid-template-columns:1fr; }
-
-      /* everything full width */
       .c1,.c2,.c3,.c4,.c5,.c6,.c7,.c8,.c9,.c10,.c12,
       .t3,.t2,.t4 { grid-column:span 1; }
       .divider-row { grid-column:span 1; }
       .r2 { grid-row:span 1; }
-
-      /* hide desktop nav, show hamburger + mobile drawer */
       nav#nav { display:none; }
       .nav-hamburger { display:flex; }
       .nav-mobile { display:flex; }
-
-      /* specific mobile fixes */
       .hero { min-height:auto; padding:1.8rem; }
       .hero-title { font-size:2.2rem; }
       .hero-btns { flex-direction:column; }
       .form-2col { grid-template-columns:1fr; }
       .clock-ring { width:64px; height:64px; }
       .clock-ring svg { width:64px; height:64px; }
-
-      /* hide cursor on touch */
       #cursor, #cursor-ring { display:none; }
       * { cursor:auto !important; }
       .nav-hamburger { cursor:pointer !important; }
+      .gh-cta { grid-column:span 1; flex-direction:column; align-items:flex-start; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Custom Cursor -->
   <div id="cursor"></div>
   <div id="cursor-ring"></div>
-
-  <!-- Background -->
   <div class="glow-layer"><em></em><em></em><em></em></div>
 
-  <!-- Desktop Nav -->
   <nav id="nav">
     <a href="#top" class="active">Work</a>
     <a href="#projects">Projects</a>
@@ -695,12 +736,10 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Mobile Hamburger -->
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 
-  <!-- Mobile Nav Drawer -->
   <div class="nav-mobile" id="nav-mobile">
     <a href="#top">Work</a>
     <a href="#projects">Projects</a>
@@ -712,8 +751,7 @@
   <main class="wrap" id="top">
     <div class="grid">
 
-      <!-- ══════════ ROW 1-2: HERO (c6 r2) + PROFILE (c6) ══════════ -->
-
+      <!-- HERO c6 r2 -->
       <div class="card hero c6 r2" style="--d:.05s">
         <div>
           <div class="hero-badge"><span class="badge-dot"></span>Open to opportunities</div>
@@ -741,6 +779,7 @@
         </div>
       </div>
 
+      <!-- PROFILE c6 -->
       <div class="card profile c6" style="--d:.1s">
         <div class="profile-row">
           <div class="ava">👩‍💻</div>
@@ -769,15 +808,13 @@
         </div>
       </div>
 
-      <!-- ══════════ ROW 2: Stats (c2×3) under hero col 7-12 ══════════
-           Hero occupies cols 1-6 row 1-2, so these go into cols 7-12 row 2 -->
-
+      <!-- STATS — 7+ Projects (changed from 5+) -->
       <div class="card stat c2 t2" style="--d:.13s">
         <span class="stat-n g">3+</span>
         <span class="stat-l">Years Exp</span>
       </div>
       <div class="card stat c2 t2" style="--d:.16s">
-        <span class="stat-n c">5+</span>
+        <span class="stat-n c">7+</span>
         <span class="stat-l">Projects</span>
       </div>
       <div class="card stat c2 t2" style="--d:.19s">
@@ -785,7 +822,7 @@
         <span class="stat-l">Backend</span>
       </div>
 
-      <!-- ══════════ ROW 3: MARQUEE (c12) ══════════ -->
+      <!-- MARQUEE c12 -->
       <div class="card marquee-wrap c12" style="--d:.22s; padding:0 1rem;">
         <div class="marquee-track">
           <span class="mi">Node.js <span class="sep">◆</span></span>
@@ -800,7 +837,6 @@
           <span class="mi hi">Claude API <span class="sep">◆</span></span>
           <span class="mi">Docker <span class="sep">◆</span></span>
           <span class="mi">TypeScript <span class="sep">◆</span></span>
-          <!-- repeat for loop -->
           <span class="mi">Node.js <span class="sep">◆</span></span>
           <span class="mi hi">NestJS <span class="sep">◆</span></span>
           <span class="mi">Express.js <span class="sep">◆</span></span>
@@ -816,7 +852,7 @@
         </div>
       </div>
 
-      <!-- ══════════ ROW 4: TERMINAL (c7) + CLOCK+CP (c5) ══════════ -->
+      <!-- TERMINAL c7 -->
       <div class="card terminal c7" style="--d:.25s" id="about">
         <div class="term-bar">
           <span class="td r"></span><span class="td y"></span><span class="td g"></span>
@@ -854,7 +890,7 @@
         <div class="clock-sub">IST · UTC +5:30</div>
       </div>
 
-      <!-- CP Profiles c3 — add more .cp-entry items as needed -->
+      <!-- CP Profiles c3 -->
       <div class="card c3" style="--d:.29s; display:flex; flex-direction:column; justify-content:space-between;">
         <div style="font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem;">Competitive Programming</div>
         <div style="display:flex;flex-direction:column;gap:0.6rem;flex:1;">
@@ -886,10 +922,10 @@
         </div>
       </div>
 
-      <!-- ══════════ PROJECTS ══════════ -->
-      <div class="divider-row" id="projects" style="--d:.3s"><span>Selected Projects</span></div>
+      <!-- ══════════ PROJECTS — "Featured Projects" (changed from Selected) ══════════ -->
+      <div class="divider-row" id="projects" style="--d:.3s"><span>Featured Projects</span></div>
 
-      <!-- DevLens c8 -->
+      <!-- DevLens c8 — with Live Demo button -->
       <div class="card proj c8" style="--d:.32s">
         <div class="proj-top">
           <span class="proj-num">01</span>
@@ -911,10 +947,14 @@
             <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             GitHub
           </a>
+          <a href="https://devlens.onrender.com" target="_blank" class="plink live">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0;"></span>
+            Live Demo
+          </a>
         </div>
       </div>
 
-      <!-- QuickLink c4 -->
+      <!-- QuickLink c4 — with Live API button -->
       <div class="card proj c4" style="--d:.35s">
         <div class="proj-top">
           <span class="proj-num">02</span>
@@ -934,6 +974,10 @@
           <a href="https://github.com/roshnithakor07/quicklink" target="_blank" class="plink">
             <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             GitHub
+          </a>
+          <a href="https://quicklink-api.onrender.com" target="_blank" class="plink live">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0;"></span>
+            Live API
           </a>
         </div>
       </div>
@@ -1056,6 +1100,62 @@
         </div>
       </div>
 
+      <!-- ══════════ MORE ON GITHUB (3 mini cards — Eventus work) ══════════ -->
+      <div class="divider-row" style="--d:.47s"><span>More on GitHub</span></div>
+
+      <div class="card c12" style="--d:.48s; padding:1.4rem 1.6rem;">
+        <div style="font-family:var(--mono);font-size:0.58rem;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;">Work at Eventus Security</div>
+        <div class="mini-proj-grid">
+          <a href="https://github.com/roshnithakor07" target="_blank" class="mini-proj-card">
+            <div class="mini-proj-ico">🏥</div>
+            <div class="mini-proj-name">Health Check Automation</div>
+            <div class="mini-proj-desc">Automated health monitoring for microservices with scheduled cron jobs, alerting, and a live status dashboard.</div>
+            <div class="mini-proj-tags">
+              <span class="mini-proj-tag">NestJS</span>
+              <span class="mini-proj-tag">MongoDB</span>
+              <span class="mini-proj-tag">Cron</span>
+            </div>
+          </a>
+          <a href="https://github.com/roshnithakor07" target="_blank" class="mini-proj-card">
+            <div class="mini-proj-ico">🗂️</div>
+            <div class="mini-proj-name">Admin Dashboard</div>
+            <div class="mini-proj-desc">Multi-module admin panel with API management, product integration, ESDL URL management, and master dashboard views.</div>
+            <div class="mini-proj-tags">
+              <span class="mini-proj-tag">Next.js</span>
+              <span class="mini-proj-tag">NestJS</span>
+              <span class="mini-proj-tag">MongoDB</span>
+            </div>
+          </a>
+          <a href="https://github.com/roshnithakor07" target="_blank" class="mini-proj-card">
+            <div class="mini-proj-ico">🎫</div>
+            <div class="mini-proj-name">osTicket Client Portal</div>
+            <div class="mini-proj-desc">Dark-themed osTicket portal redesign with improved CSS architecture, registration overhaul, and multi-page UI consistency.</div>
+            <div class="mini-proj-tags">
+              <span class="mini-proj-tag">PHP</span>
+              <span class="mini-proj-tag">CSS</span>
+              <span class="mini-proj-tag">jQuery</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- ══════════ GITHUB CTA BANNER ══════════ -->
+      <div class="gh-cta card" style="--d:.5s">
+        <div class="gh-cta-left">
+          <div class="gh-cta-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <div>
+            <div class="gh-cta-username">roshnithakor07</div>
+            <div class="gh-cta-stats">10+ repos · 7+ projects · 3+ years of commits</div>
+          </div>
+        </div>
+        <a href="https://github.com/roshnithakor07" target="_blank" class="gh-cta-btn">
+          View All on GitHub
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
       <!-- ══════════ SKILLS / STACK / EXPERIENCE ══════════ -->
       <div class="divider-row" id="about-skills" style="--d:.41s"><span>Skills &amp; Experience</span></div>
 
@@ -1129,7 +1229,6 @@
       <!-- Experience c4 -->
       <div class="card c4" style="--d:.49s" id="experience">
         <div class="exp-title">Experience</div>
-
         <div class="exp-item">
           <div class="exp-spine"><div class="exp-dot"></div><div class="exp-vl"></div></div>
           <div>
@@ -1139,7 +1238,6 @@
             <div class="exp-desc">DevLens AI code review, admin dashboards, health check automation, data visualization platform using NestJS + MongoDB + Next.js.</div>
           </div>
         </div>
-
         <div class="exp-item">
           <div class="exp-spine"><div class="exp-dot dim"></div><div class="exp-vl"></div></div>
           <div>
@@ -1149,7 +1247,6 @@
             <div class="exp-desc">WordPress, PHP, MySQL, SEO</div>
           </div>
         </div>
-
         <div class="exp-item">
           <div class="exp-spine"><div class="exp-dot dim"></div></div>
           <div>
@@ -1161,7 +1258,7 @@
         </div>
       </div>
 
-      <!-- ══ CURRENTLY LEARNING c12 ══ -->
+      <!-- CURRENTLY LEARNING c12 -->
       <div class="card c12" style="--d:.52s">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem;flex-wrap:wrap;gap:0.75rem;">
           <div>
@@ -1173,19 +1270,13 @@
             <span style="font-family:var(--mono);font-size:0.62rem;color:var(--cyan);">Active · 6-week daily plan</span>
           </div>
         </div>
-
         <div class="learn-grid">
-
-          <!-- PostgreSQL -->
           <div class="learn-card">
             <div class="learn-top">
               <div class="learn-icon" style="background:rgba(93,228,216,0.1);color:var(--cyan);">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
               </div>
-              <div>
-                <div class="learn-name">PostgreSQL</div>
-                <div class="learn-cat">Database</div>
-              </div>
+              <div><div class="learn-name">PostgreSQL</div><div class="learn-cat">Database</div></div>
             </div>
             <div class="learn-bar-wrap">
               <div class="learn-bar"><div class="learn-fill" data-w="45" style="background:var(--cyan)"></div></div>
@@ -1194,17 +1285,12 @@
             <div class="learn-tags"><span class="learn-tag">JOINs</span><span class="learn-tag">Window Fn</span><span class="learn-tag">Indexes</span></div>
             <div class="learn-status active-status">In Progress</div>
           </div>
-
-          <!-- Kafka -->
           <div class="learn-card">
             <div class="learn-top">
               <div class="learn-icon" style="background:rgba(240,96,96,0.1);color:var(--red);">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               </div>
-              <div>
-                <div class="learn-name">Apache Kafka</div>
-                <div class="learn-cat">Message Queue</div>
-              </div>
+              <div><div class="learn-name">Apache Kafka</div><div class="learn-cat">Message Queue</div></div>
             </div>
             <div class="learn-bar-wrap">
               <div class="learn-bar"><div class="learn-fill" data-w="20" style="background:var(--red)"></div></div>
@@ -1213,17 +1299,12 @@
             <div class="learn-tags"><span class="learn-tag">Producers</span><span class="learn-tag">Consumers</span><span class="learn-tag">Topics</span></div>
             <div class="learn-status upcoming-status">Up Next</div>
           </div>
-
-          <!-- System Design -->
           <div class="learn-card">
             <div class="learn-top">
               <div class="learn-icon" style="background:rgba(176,126,248,0.1);color:var(--purple);">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="7" height="7"/><rect x="15" y="3" width="7" height="7"/><rect x="2" y="14" width="7" height="7"/><rect x="15" y="14" width="7" height="7"/></svg>
               </div>
-              <div>
-                <div class="learn-name">System Design</div>
-                <div class="learn-cat">Architecture</div>
-              </div>
+              <div><div class="learn-name">System Design</div><div class="learn-cat">Architecture</div></div>
             </div>
             <div class="learn-bar-wrap">
               <div class="learn-bar"><div class="learn-fill" data-w="35" style="background:var(--purple)"></div></div>
@@ -1232,17 +1313,12 @@
             <div class="learn-tags"><span class="learn-tag">Load Balancer</span><span class="learn-tag">Caching</span><span class="learn-tag">CAP</span></div>
             <div class="learn-status active-status">In Progress</div>
           </div>
-
-          <!-- TypeScript -->
           <div class="learn-card">
             <div class="learn-top">
               <div class="learn-icon" style="background:rgba(93,228,216,0.08);color:#5b9bd5;">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               </div>
-              <div>
-                <div class="learn-name">TypeScript</div>
-                <div class="learn-cat">Language</div>
-              </div>
+              <div><div class="learn-name">TypeScript</div><div class="learn-cat">Language</div></div>
             </div>
             <div class="learn-bar-wrap">
               <div class="learn-bar"><div class="learn-fill" data-w="60" style="background:#5b9bd5"></div></div>
@@ -1251,17 +1327,12 @@
             <div class="learn-tags"><span class="learn-tag">Generics</span><span class="learn-tag">Utility Types</span><span class="learn-tag">Decorators</span></div>
             <div class="learn-status active-status">In Progress</div>
           </div>
-
-          <!-- DSA / Java -->
           <div class="learn-card">
             <div class="learn-top">
               <div class="learn-icon" style="background:rgba(233,202,128,0.1);color:var(--gold);">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               </div>
-              <div>
-                <div class="learn-name">DSA in Java</div>
-                <div class="learn-cat">Problem Solving</div>
-              </div>
+              <div><div class="learn-name">DSA in Java</div><div class="learn-cat">Problem Solving</div></div>
             </div>
             <div class="learn-bar-wrap">
               <div class="learn-bar"><div class="learn-fill" data-w="30" style="background:var(--gold)"></div></div>
@@ -1270,17 +1341,12 @@
             <div class="learn-tags"><span class="learn-tag">Arrays</span><span class="learn-tag">Two Pointers</span><span class="learn-tag">Trees</span></div>
             <div class="learn-status active-status">In Progress</div>
           </div>
-
-          <!-- Gen AI -->
           <div class="learn-card">
             <div class="learn-top">
               <div class="learn-icon" style="background:rgba(176,126,248,0.12);color:var(--purple);">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               </div>
-              <div>
-                <div class="learn-name">Gen AI / LLMs</div>
-                <div class="learn-cat">AI Integration</div>
-              </div>
+              <div><div class="learn-name">Gen AI / LLMs</div><div class="learn-cat">AI Integration</div></div>
             </div>
             <div class="learn-bar-wrap">
               <div class="learn-bar"><div class="learn-fill" data-w="50" style="background:var(--purple)"></div></div>
@@ -1289,14 +1355,12 @@
             <div class="learn-tags"><span class="learn-tag">Prompting</span><span class="learn-tag">Streaming</span><span class="learn-tag">RAG</span></div>
             <div class="learn-status active-status">In Progress</div>
           </div>
-
         </div>
       </div>
 
-      <!-- ══════════ CONTACT ══════════ -->
+      <!-- CONTACT -->
       <div class="divider-row" id="contact" style="--d:.51s"><span>Get in Touch</span></div>
 
-      <!-- Form c7 -->
       <div class="card c7" style="--d:.53s">
         <h2 class="contact-head">Start a <em>conversation</em></h2>
         <p class="contact-sub">Building something? Looking for a backend engineer? Let's talk.</p>
@@ -1327,7 +1391,6 @@
         </form>
       </div>
 
-      <!-- Connect c5 -->
       <div class="card c5" style="--d:.56s">
         <h3 class="connect-h">Let's Connect</h3>
         <p class="connect-p">Find me across the internet</p>
@@ -1350,8 +1413,6 @@
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           roshni.thakor.dev@gmail.com
         </a>
-
-        <!-- availability + quick facts strip -->
         <div style="margin-top:0.9rem;padding-top:0.85rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:0.55rem;">
           <div style="display:flex;align-items:center;justify-content:space-between;">
             <div style="display:flex;align-items:center;gap:0.55rem;">
@@ -1373,13 +1434,13 @@
         </div>
       </div>
 
-    </div><!-- /grid -->
+    </div>
   </main>
 
   <footer>© 2025 Roshni Thakor — Designed &amp; built with precision</footer>
 
   <script>
-    // ── CURSOR
+    // CURSOR
     const cur = document.getElementById('cursor');
     const ring = document.getElementById('cursor-ring');
     let mx=0,my=0,rx=0,ry=0;
@@ -1392,14 +1453,13 @@
       requestAnimationFrame(loop);
     })();
 
-    // ── HAMBURGER
+    // HAMBURGER
     const hbg = document.getElementById('hamburger');
     const mobileNav = document.getElementById('nav-mobile');
     hbg?.addEventListener('click', () => {
       hbg.classList.toggle('open');
       mobileNav.classList.toggle('open');
     });
-    // close mobile nav on link click
     document.querySelectorAll('.nav-mobile a').forEach(l => {
       l.addEventListener('click', e => {
         e.preventDefault();
@@ -1410,58 +1470,45 @@
       });
     });
 
-    // ── CONTACT FORM (AJAX — stays on page)
+    // CONTACT FORM
     const contactForm = document.getElementById('contact-form');
     const sendBtn = document.getElementById('send-btn');
     contactForm?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      // Loading state
       sendBtn.disabled = true;
       sendBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 0.8s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Sending…`;
-
       const data = new FormData(contactForm);
       try {
         const res = await fetch('https://formspree.io/f/mlgpgjng', {
-          method: 'POST',
-          body: data,
+          method: 'POST', body: data,
           headers: { 'Accept': 'application/json' }
         });
         if (res.ok) {
-          // Success state
           sendBtn.innerHTML = '✓ Message sent! I\'ll reply soon.';
           sendBtn.style.background = 'var(--green)';
           sendBtn.style.color = '#07070f';
           contactForm.reset();
           setTimeout(() => {
             sendBtn.innerHTML = `<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
-            sendBtn.style.background = '';
-            sendBtn.style.color = '';
-            sendBtn.disabled = false;
+            sendBtn.style.background = ''; sendBtn.style.color = ''; sendBtn.disabled = false;
           }, 4000);
-        } else {
-          throw new Error('Failed');
-        }
+        } else { throw new Error('Failed'); }
       } catch {
         sendBtn.innerHTML = '✕ Something went wrong. Try again.';
-        sendBtn.style.background = 'var(--red)';
-        sendBtn.style.color = '#fff';
+        sendBtn.style.background = 'var(--red)'; sendBtn.style.color = '#fff';
         setTimeout(() => {
           sendBtn.innerHTML = `<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
-          sendBtn.style.background = '';
-          sendBtn.style.color = '';
-          sendBtn.disabled = false;
+          sendBtn.style.background = ''; sendBtn.style.color = ''; sendBtn.disabled = false;
         }, 3000);
       }
     });
 
-    // ── CLOCK
+    // CLOCK
     const clk = document.getElementById('clock');
-    function tick(){
-      clk.textContent = new Date().toLocaleTimeString('en-IN',{hour12:false,timeZone:'Asia/Kolkata'});
-    }
+    function tick(){ clk.textContent = new Date().toLocaleTimeString('en-IN',{hour12:false,timeZone:'Asia/Kolkata'}); }
     tick(); setInterval(tick,1000);
 
-    // ── NAV ACTIVE
+    // NAV ACTIVE
     const navLinks = document.querySelectorAll('nav a, .nav-mobile a');
     const anchors  = ['top','projects','about-skills','experience','contact'];
     window.addEventListener('scroll',()=>{
@@ -1489,26 +1536,26 @@
       });
     });
 
-    // ── SCROLL REVEAL + SKILL BARS
+    // SCROLL REVEAL + SKILL BARS
     const io = new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(!e.isIntersecting) return;
         e.target.classList.add('vis');
-        // animate skill bars inside this card
         e.target.querySelectorAll('.skill-fill[data-w]').forEach(b=>{
           setTimeout(()=>{ b.style.width = b.dataset.w + '%'; }, 200);
+        });
+        e.target.querySelectorAll('.learn-fill[data-w]').forEach(b=>{
+          setTimeout(()=>{ b.style.width = b.dataset.w + '%'; }, 300);
         });
         io.unobserve(e.target);
       });
     },{threshold:0.08});
 
-    document.querySelectorAll('.card').forEach((c,i)=>{
-      // use existing --d variable or compute from index
+    document.querySelectorAll('.card').forEach(c=>{
       const d = parseFloat(getComputedStyle(c).getPropertyValue('--d')||0);
       c.style.animationDelay = d + 's';
       io.observe(c);
     });
-
   </script>
 </body>
 </html>
