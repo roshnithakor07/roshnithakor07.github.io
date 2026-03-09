@@ -548,6 +548,8 @@
       font-family:var(--mono); font-size:0.6rem; color:var(--muted);
     }
 
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     /* ═══════════════════════════════════════ CURRENTLY LEARNING */
     .learn-grid {
       display:grid;
@@ -1298,8 +1300,7 @@
       <div class="card c7" style="--d:.53s">
         <h2 class="contact-head">Start a <em>conversation</em></h2>
         <p class="contact-sub">Building something? Looking for a backend engineer? Let's talk.</p>
-        <form action="https://formspree.io/f/mlgpgjng" method="POST">
-          <input type="hidden" name="_next" value="https://roshnithakor07.github.io">
+        <form id="contact-form">
           <input type="hidden" name="_format" value="plain">
           <div class="form-2col">
             <div class="fg">
@@ -1407,6 +1408,50 @@
         const t = document.querySelector(l.getAttribute('href'));
         if(t) setTimeout(() => t.scrollIntoView({behavior:'smooth'}), 300);
       });
+    });
+
+    // ── CONTACT FORM (AJAX — stays on page)
+    const contactForm = document.getElementById('contact-form');
+    const sendBtn = document.getElementById('send-btn');
+    contactForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      // Loading state
+      sendBtn.disabled = true;
+      sendBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 0.8s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Sending…`;
+
+      const data = new FormData(contactForm);
+      try {
+        const res = await fetch('https://formspree.io/f/mlgpgjng', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          // Success state
+          sendBtn.innerHTML = '✓ Message sent! I\'ll reply soon.';
+          sendBtn.style.background = 'var(--green)';
+          sendBtn.style.color = '#07070f';
+          contactForm.reset();
+          setTimeout(() => {
+            sendBtn.innerHTML = `<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
+            sendBtn.style.background = '';
+            sendBtn.style.color = '';
+            sendBtn.disabled = false;
+          }, 4000);
+        } else {
+          throw new Error('Failed');
+        }
+      } catch {
+        sendBtn.innerHTML = '✕ Something went wrong. Try again.';
+        sendBtn.style.background = 'var(--red)';
+        sendBtn.style.color = '#fff';
+        setTimeout(() => {
+          sendBtn.innerHTML = `<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
+          sendBtn.style.background = '';
+          sendBtn.style.color = '';
+          sendBtn.disabled = false;
+        }, 3000);
+      }
     });
 
     // ── CLOCK
