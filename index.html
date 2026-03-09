@@ -1101,44 +1101,6 @@
       </div>
 
       <!-- ══════════ MORE ON GITHUB (3 mini cards — Eventus work) ══════════ -->
-      <div class="divider-row" style="--d:.47s"><span>More on GitHub</span></div>
-
-      <div class="card c12" style="--d:.48s; padding:1.4rem 1.6rem;">
-        <div style="font-family:var(--mono);font-size:0.58rem;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;">Work at Eventus Security</div>
-        <div class="mini-proj-grid">
-          <a href="https://github.com/roshnithakor07" target="_blank" class="mini-proj-card">
-            <div class="mini-proj-ico">🏥</div>
-            <div class="mini-proj-name">Health Check Automation</div>
-            <div class="mini-proj-desc">Automated health monitoring for microservices with scheduled cron jobs, alerting, and a live status dashboard.</div>
-            <div class="mini-proj-tags">
-              <span class="mini-proj-tag">NestJS</span>
-              <span class="mini-proj-tag">MongoDB</span>
-              <span class="mini-proj-tag">Cron</span>
-            </div>
-          </a>
-          <a href="https://github.com/roshnithakor07" target="_blank" class="mini-proj-card">
-            <div class="mini-proj-ico">🗂️</div>
-            <div class="mini-proj-name">Admin Dashboard</div>
-            <div class="mini-proj-desc">Multi-module admin panel with API management, product integration, ESDL URL management, and master dashboard views.</div>
-            <div class="mini-proj-tags">
-              <span class="mini-proj-tag">Next.js</span>
-              <span class="mini-proj-tag">NestJS</span>
-              <span class="mini-proj-tag">MongoDB</span>
-            </div>
-          </a>
-          <a href="https://github.com/roshnithakor07" target="_blank" class="mini-proj-card">
-            <div class="mini-proj-ico">🎫</div>
-            <div class="mini-proj-name">osTicket Client Portal</div>
-            <div class="mini-proj-desc">Dark-themed osTicket portal redesign with improved CSS architecture, registration overhaul, and multi-page UI consistency.</div>
-            <div class="mini-proj-tags">
-              <span class="mini-proj-tag">PHP</span>
-              <span class="mini-proj-tag">CSS</span>
-              <span class="mini-proj-tag">jQuery</span>
-            </div>
-          </a>
-        </div>
-      </div>
-
       <!-- ══════════ GITHUB CTA BANNER ══════════ -->
       <div class="gh-cta card" style="--d:.5s">
         <div class="gh-cta-left">
@@ -1409,9 +1371,9 @@
           </a>
         </div>
         <div class="sep-line"><span>or email</span></div>
-        <a href="mailto:roshni.thakor.dev@gmail.com" class="email-row">
+        <a href="/cdn-cgi/l/email-protection#2d5f425e4543440359454c46425f0349485b6d4a404c4441034e4240" class="email-row">
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          roshni.thakor.dev@gmail.com
+          <span class="__cf_email__" data-cfemail="43312c302b2d2a6d372b22282c316d27263503242e222a2f6d202c2e">[email&#160;protected]</span>
         </a>
         <div style="margin-top:0.9rem;padding-top:0.85rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:0.55rem;">
           <div style="display:flex;align-items:center;justify-content:space-between;">
@@ -1439,7 +1401,7 @@
 
   <footer>© 2025 Roshni Thakor — Designed &amp; built with precision</footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // CURSOR
     const cur = document.getElementById('cursor');
     const ring = document.getElementById('cursor-ring');
@@ -1549,13 +1511,9 @@
         });
         io.unobserve(e.target);
       });
-    },{threshold:0.08});
+    }, {threshold:0.1});
+    document.querySelectorAll('.card').forEach(c => io.observe(c));
 
-    document.querySelectorAll('.card').forEach(c=>{
-      const d = parseFloat(getComputedStyle(c).getPropertyValue('--d')||0);
-      c.style.animationDelay = d + 's';
-      io.observe(c);
-    });
   </script>
 </body>
 </html>
