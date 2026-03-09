@@ -1298,7 +1298,7 @@
       <div class="card c7" style="--d:.53s">
         <h2 class="contact-head">Start a <em>conversation</em></h2>
         <p class="contact-sub">Building something? Looking for a backend engineer? Let's talk.</p>
-        <form onsubmit="handleForm(event)">
+        <form action="https://formspree.io/f/mlgpgjng" method="POST">
           <div class="form-2col">
             <div class="fg">
               <label class="fl">Name</label>
@@ -1458,19 +1458,6 @@
       io.observe(c);
     });
 
-    // ── FORM
-    function handleForm(e){
-      e.preventDefault();
-      const btn=document.getElementById('send-btn');
-      btn.innerHTML='✓ Message sent!';
-      btn.style.background='var(--green)';
-      btn.style.color='#07070f';
-      setTimeout(()=>{
-        btn.innerHTML=`<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message`;
-        btn.style.background='';btn.style.color='';
-        e.target.reset();
-      },3000);
-    }
   </script>
 </body>
 </html>
