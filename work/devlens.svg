@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 1200 750" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <!-- Placeholder illustration of DevLens (AI code review): a diff on the left, streamed review comments on the right -->
+  <rect width="1200" height="750" fill="#0f0c2e"/>
+  <!-- window bar -->
+  <rect width="1200" height="56" fill="#1a1446"/>
+  <circle cx="32" cy="28" r="7" fill="#ef4444"/><circle cx="56" cy="28" r="7" fill="#2d2a5a"/><circle cx="80" cy="28" r="7" fill="#2d2a5a"/>
+  <text x="116" y="34" fill="#b9b5d6" font-size="16">DevLens · PR #482 · feat: org-scoped RBAC guard</text>
+  <rect x="1010" y="16" width="160" height="24" rx="12" fill="#0e7490"/><text x="1090" y="33" fill="#cffafe" font-size="13" text-anchor="middle" font-weight="700">3 hunks changed</text>
+
+  <!-- diff panel -->
+  <rect x="24" y="80" width="700" height="646" rx="12" fill="#16123d"/>
+  <text x="48" y="114" fill="#cffafe" font-size="15" font-weight="700">src/auth/rbac.guard.ts</text>
+  <text x="700" y="114" fill="#8b87b3" font-size="13" text-anchor="end">+12 −4</text>
+  <line x1="24" y1="130" x2="724" y2="130" stroke="#2d2a5a"/>
+  <g font-size="15">
+    <text x="48" y="164" fill="#5e5a80">41</text><text x="96" y="164" fill="#b9b5d6">canActivate(ctx: ExecutionContext) {</text>
+    <text x="48" y="194" fill="#5e5a80">42</text><text x="96" y="194" fill="#b9b5d6">  const user = this.auth.fromRequest(ctx);</text>
+    <rect x="24" y="206" width="700" height="30" fill="#3b1220"/>
+    <text x="48" y="226" fill="#f87171">−</text><text x="96" y="226" fill="#fca5a5">  logger.debug(`auth ${user.token}`);</text>
+    <rect x="24" y="236" width="700" height="30" fill="#0b3b2e"/>
+    <text x="48" y="256" fill="#4ade80">+</text><text x="96" y="256" fill="#bbf7d0">  logger.debug(`auth user=${user.id}`);</text>
+    <rect x="24" y="266" width="700" height="30" fill="#0b3b2e"/>
+    <text x="48" y="286" fill="#4ade80">+</text><text x="96" y="286" fill="#bbf7d0">  const orgId = ctx.switchToHttp()</text>
+    <rect x="24" y="296" width="700" height="30" fill="#0b3b2e"/>
+    <text x="48" y="316" fill="#4ade80">+</text><text x="96" y="316" fill="#bbf7d0">    .getRequest().params.orgId;</text>
+    <rect x="24" y="326" width="700" height="30" fill="#0b3b2e"/>
+    <text x="48" y="346" fill="#4ade80">+</text><text x="96" y="346" fill="#bbf7d0">  if (user.orgId !== orgId) return false;</text>
+    <text x="48" y="384" fill="#5e5a80">47</text><text x="96" y="384" fill="#b9b5d6">  return this.perms.has(user, ctx.handler);</text>
+    <text x="48" y="414" fill="#5e5a80">48</text><text x="96" y="414" fill="#b9b5d6">}</text>
+  </g>
+  <rect x="48" y="450" width="652" height="1" fill="#2d2a5a"/>
+  <text x="48" y="486" fill="#8b87b3" font-size="14">Scope: only changed hunks are sent for review</text>
+  <g fill="#2d2a5a"><rect x="48" y="510" width="420" height="12" rx="6"/><rect x="48" y="536" width="560" height="12" rx="6"/><rect x="48" y="562" width="360" height="12" rx="6"/><rect x="48" y="588" width="500" height="12" rx="6"/><rect x="48" y="614" width="300" height="12" rx="6"/></g>
+
+  <!-- review panel -->
+  <rect x="748" y="80" width="428" height="646" rx="12" fill="#16123d"/>
+  <text x="772" y="114" fill="#cffafe" font-size="15" font-weight="700">DevLens review</text>
+  <circle cx="1146" cy="109" r="6" fill="#4ade80"/>
+  <line x1="748" y1="130" x2="1176" y2="130" stroke="#2d2a5a"/>
+
+  <rect x="772" y="150" width="380" height="156" rx="10" fill="#1f1a52" stroke="#ef4444" stroke-opacity="0.6"/>
+  <rect x="788" y="166" width="78" height="22" rx="11" fill="#3b1220"/><text x="827" y="182" fill="#fca5a5" font-size="12" text-anchor="middle" font-weight="700">SECURITY</text>
+  <text x="878" y="182" fill="#8b87b3" font-size="12">line 43</text>
+  <text x="788" y="214" fill="#e5e3f5" font-size="14">Token was written to debug logs.</text>
+  <text x="788" y="236" fill="#e5e3f5" font-size="14">Fixed here: log the user id instead.</text>
+  <text x="788" y="270" fill="#4ade80" font-size="13">✓ resolved in this diff</text>
+
+  <rect x="772" y="322" width="380" height="150" rx="10" fill="#1f1a52" stroke="#0e7490"/>
+  <rect x="788" y="338" width="64" height="22" rx="11" fill="#083344"/><text x="820" y="354" fill="#67e8f9" font-size="12" text-anchor="middle" font-weight="700">LOGIC</text>
+  <text x="864" y="354" fill="#8b87b3" font-size="12">line 46</text>
+  <text x="788" y="386" fill="#e5e3f5" font-size="14">Org check runs before permission</text>
+  <text x="788" y="408" fill="#e5e3f5" font-size="14">lookup: good, tenant data stays</text>
+  <text x="788" y="430" fill="#e5e3f5" font-size="14">isolated. Add a test for a</text>
+  <text x="788" y="452" fill="#e5e3f5" font-size="14">cross-org request.</text>
+
+  <rect x="772" y="488" width="380" height="96" rx="10" fill="#1f1a52"/>
+  <text x="788" y="520" fill="#8b87b3" font-size="13">claude · streaming</text>
+  <text x="788" y="548" fill="#e5e3f5" font-size="14">Suggest guarding orgId when the</text>
+  <rect x="1058" y="535" width="9" height="17" fill="#67e8f9"/>
+
+  <text x="772" y="628" fill="#8b87b3" font-size="13">first token</text><text x="1152" y="628" fill="#cffafe" font-size="13" text-anchor="end" font-weight="700">0.8 s</text>
+  <rect x="772" y="640" width="380" height="8" rx="4" fill="#2d2a5a"/><rect x="772" y="640" width="64" height="8" rx="4" fill="#0e7490"/>
+  <text x="772" y="680" fill="#8b87b3" font-size="13">before streaming</text><text x="1152" y="680" fill="#8b87b3" font-size="13" text-anchor="end">8 s</text>
+  <rect x="772" y="692" width="380" height="8" rx="4" fill="#3b1220"/>
+</svg>

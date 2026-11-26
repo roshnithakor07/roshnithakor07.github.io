@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 1200 750" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <!-- Placeholder illustration of the scheduling API: weekly free/busy grid with one confirmed booking -->
+  <rect width="1200" height="750" fill="#0f0c2e"/>
+  <rect width="1200" height="56" fill="#1a1446"/>
+  <circle cx="32" cy="28" r="7" fill="#ef4444"/><circle cx="56" cy="28" r="7" fill="#2d2a5a"/><circle cx="80" cy="28" r="7" fill="#2d2a5a"/>
+  <text x="116" y="34" fill="#b9b5d6" font-size="16">availability · Asia/Kolkata (UTC+5:30)</text>
+  <rect x="24" y="80" width="760" height="646" rx="12" fill="#16123d"/>
+  <g fill="#8b87b3" font-size="14" text-anchor="middle"><text x="200" y="118">MON</text><text x="330" y="118">TUE</text><text x="460" y="118">WED</text><text x="590" y="118">THU</text><text x="720" y="118">FRI</text></g>
+  <g fill="#8b87b3" font-size="13"><text x="48" y="168">09:00</text><text x="48" y="248">10:00</text><text x="48" y="328">11:00</text><text x="48" y="408">12:00</text><text x="48" y="488">14:00</text><text x="48" y="568">15:00</text><text x="48" y="648">16:00</text></g>
+  <g fill="#1f1a52"><rect x="140" y="140" width="120" height="64" rx="8"/><rect x="270" y="140" width="120" height="64" rx="8"/><rect x="400" y="140" width="120" height="64" rx="8"/><rect x="660" y="140" width="120" height="64" rx="8"/>
+  <rect x="140" y="300" width="120" height="64" rx="8"/><rect x="400" y="220" width="120" height="64" rx="8"/><rect x="530" y="300" width="120" height="64" rx="8"/><rect x="660" y="300" width="120" height="64" rx="8"/>
+  <rect x="270" y="460" width="120" height="64" rx="8"/><rect x="400" y="460" width="120" height="64" rx="8"/><rect x="140" y="540" width="120" height="64" rx="8"/><rect x="530" y="540" width="120" height="64" rx="8"/><rect x="660" y="620" width="120" height="64" rx="8"/><rect x="270" y="620" width="120" height="64" rx="8"/></g>
+  <g fill="#3b1220"><rect x="530" y="140" width="120" height="64" rx="8"/><rect x="140" y="220" width="120" height="64" rx="8"/><rect x="270" y="300" width="120" height="64" rx="8"/><rect x="660" y="220" width="120" height="64" rx="8"/><rect x="530" y="460" width="120" height="64" rx="8"/><rect x="400" y="620" width="120" height="64" rx="8"/></g>
+  <g fill="#fca5a5" font-size="12" text-anchor="middle"><text x="590" y="177">busy</text><text x="200" y="257">busy</text><text x="330" y="337">busy</text><text x="720" y="257">busy</text><text x="590" y="497">busy</text><text x="460" y="657">busy</text></g>
+  <rect x="270" y="220" width="120" height="64" rx="8" fill="#0e7490" stroke="#67e8f9" stroke-width="2"/>
+  <text x="330" y="249" fill="#cffafe" font-size="13" text-anchor="middle" font-weight="700">BOOKED</text>
+  <text x="330" y="269" fill="#cffafe" font-size="12" text-anchor="middle">Intro call</text>
+  <rect x="808" y="80" width="368" height="646" rx="12" fill="#16123d"/>
+  <text x="836" y="122" fill="#cffafe" font-size="16" font-weight="700">POST /bookings</text>
+  <rect x="836" y="140" width="312" height="150" rx="8" fill="#0b0920"/>
+  <g font-size="13"><text x="852" y="170" fill="#8b87b3">BEGIN;</text><text x="852" y="196" fill="#e5e3f5">SELECT … FOR UPDATE</text><text x="852" y="222" fill="#e5e3f5">check overlap → none</text><text x="852" y="248" fill="#e5e3f5">INSERT booking</text><text x="852" y="274" fill="#4ade80">COMMIT ✓</text></g>
+  <text x="836" y="330" fill="#8b87b3" font-size="14">free/busy cache</text><text x="1148" y="330" fill="#67e8f9" font-size="14" text-anchor="end" font-weight="700">Redis HIT</text>
+  <text x="836" y="366" fill="#8b87b3" font-size="14">Google Calendar</text><text x="1148" y="366" fill="#4ade80" font-size="14" text-anchor="end">synced (OAuth2)</text>
+  <line x1="836" y1="392" x2="1148" y2="392" stroke="#2d2a5a"/>
+  <text x="836" y="428" fill="#cffafe" font-size="15" font-weight="700">webhook → booking.confirmed</text>
+  <rect x="836" y="444" width="312" height="96" rx="8" fill="#0b0920"/>
+  <g font-size="12"><text x="852" y="472" fill="#8b87b3">X-Signature: sha256=9f2c…e41a</text><text x="852" y="498" fill="#e5e3f5">HMAC verified ✓</text><text x="852" y="524" fill="#4ade80">200 OK · 38 ms</text></g>
+  <text x="836" y="590" fill="#8b87b3" font-size="14">double-bookings</text><text x="1148" y="590" fill="#4ade80" font-size="22" text-anchor="end" font-weight="700">0</text>
+  <text x="836" y="630" fill="#8b87b3" font-size="14">timezone-aware</text><text x="1148" y="630" fill="#e5e3f5" font-size="14" text-anchor="end">host ↔ guest</text>
+</svg>
