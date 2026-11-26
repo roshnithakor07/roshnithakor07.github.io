@@ -2,3 +2,5 @@
 
 Built files for [roshnithakor07.github.io](https://roshnithakor07.github.io/).
 The source lives in a private repository.
+
+© Roshni Thakor. All rights reserved. This is not open source; see [LICENSE](LICENSE).
