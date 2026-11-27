@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /v2/
+
+Host: https://roshnithakor07.github.io
+Sitemap: https://roshnithakor07.github.io/sitemap.xml
